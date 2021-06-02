@@ -9,3 +9,15 @@ C:\Users\Milan\source\repos\BioskopData\BioskopData\obj\Debug\BioskopData.csproj
 C:\Users\Milan\source\repos\BioskopData\BioskopData\obj\Debug\BioskopData.csproj.CopyComplete
 C:\Users\Milan\source\repos\BioskopData\BioskopData\obj\Debug\BioskopData.dll
 C:\Users\Milan\source\repos\BioskopData\BioskopData\obj\Debug\BioskopData.pdb
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\bin\Debug\BioskopData.dll.config
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\bin\Debug\BioskopData.dll
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\bin\Debug\BioskopData.pdb
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\bin\Debug\EntityFramework.dll
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\bin\Debug\EntityFramework.xml
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\obj\Debug\BioskopData.csprojAssemblyReference.cache
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\obj\Debug\BioskopData.csproj.CoreCompileInputs.cache
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\obj\Debug\BioskopData.csproj.CopyComplete
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\obj\Debug\BioskopData.dll
+C:\Users\Milan\Desktop\test\Baze-Podataka-2-Projekat\BioskopData\BioskopData\obj\Debug\BioskopData.pdb

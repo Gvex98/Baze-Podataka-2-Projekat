@@ -50,6 +50,22 @@ namespace BioskopUI
 
             using (var db = new ADONETBioskopContainer())
             {
+                var karte = db.Kartas.Where(k => k.Kupac.Id == kup.Id).ToList();
+
+                if(karte.Count>0)
+                {
+                    foreach(Karta k in karte)
+                    {
+                        db.Kartas.Attach(k);
+                        db.Kartas.Remove(k);
+                    }
+                }
+
+
+
+
+
+
                 if (Data.kupci.Contains(kup))
                 {
                     db.Kupacs.Attach(kup);
