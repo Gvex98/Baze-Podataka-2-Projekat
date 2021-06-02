@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e332b6784f2a4dea8584a0334915b253" Name="Diagram1" ZoomLevel="95" >
+        <EntityTypeShape EntityType="ADONETBioskop.Film" Width="1.625" PointX="7" PointY="0.625" />
+        <EntityTypeShape EntityType="ADONETBioskop.Sala" Width="1.5" PointX="7" PointY="7.125" />
+        <EntityTypeShape EntityType="ADONETBioskop.Karta" Width="1.5" PointX="12.25" PointY="3.5" />
+        <EntityTypeShape EntityType="ADONETBioskop.Radnik" Width="1.5" PointX="18.875" PointY="0.75" />
+        <EntityTypeShape EntityType="ADONETBioskop.Prodavac" Width="1.5" PointX="17" PointY="2.875" />
+        <EntityTypeShape EntityType="ADONETBioskop.Projektant" Width="1.5" PointX="19" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADONETBioskop.Domar" Width="1.5" PointX="21.125" PointY="2.875" />
+        <EntityTypeShape EntityType="ADONETBioskop.Projektor" Width="1.5" PointX="12.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADONETBioskop.Kupac" Width="1.5" PointX="12" PointY="0.75" />
+        <EntityTypeShape EntityType="ADONETBioskop.Projekcija" Width="1.5" PointX="7" PointY="3.5" />
+        <InheritanceConnector EntityType="ADONETBioskop.Prodavac" />
+        <InheritanceConnector EntityType="ADONETBioskop.Projektant" />
+        <InheritanceConnector EntityType="ADONETBioskop.Domar" />
+        <AssociationConnector Association="ADONETBioskop.KartaKupac" />
+        <AssociationConnector Association="ADONETBioskop.ProjekcijaKarta" />
+        <AssociationConnector Association="ADONETBioskop.KartaProdavac" />
+        <AssociationConnector Association="ADONETBioskop.FilmProjekcija" />
+        <AssociationConnector Association="ADONETBioskop.ProjekcijaSala" />
+        <AssociationConnector Association="ADONETBioskop.SalaProjektor" />
+        <EntityTypeShape EntityType="ADONETBioskop.Odrzava" Width="1.5" PointX="14.875" PointY="7.25" />
+        <AssociationConnector Association="ADONETBioskop.SalaOdrzava" />
+        <AssociationConnector Association="ADONETBioskop.OdrzavaDomar" />
+        <EntityTypeShape EntityType="ADONETBioskop.Osposobljen" Width="1.5" PointX="17.625" PointY="6.25" />
+        <AssociationConnector Association="ADONETBioskop.OsposobljenProjektant" />
+        <AssociationConnector Association="ADONETBioskop.OsposobljenProjektor" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

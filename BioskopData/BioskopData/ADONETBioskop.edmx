@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ADONETBioskop.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ADONETBioskopStoreContainer">
+    <EntitySet Name="Films" EntityType="ADONETBioskop.Store.Films" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Salas" EntityType="ADONETBioskop.Store.Salas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kartas" EntityType="ADONETBioskop.Store.Kartas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radniks" EntityType="ADONETBioskop.Store.Radniks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projektors" EntityType="ADONETBioskop.Store.Projektors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kupacs" EntityType="ADONETBioskop.Store.Kupacs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projekcijas" EntityType="ADONETBioskop.Store.Projekcijas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Odrzavas" EntityType="ADONETBioskop.Store.Odrzavas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Osposobljens" EntityType="ADONETBioskop.Store.Osposobljens" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radniks_Prodavac" EntityType="ADONETBioskop.Store.Radniks_Prodavac" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radniks_Domar" EntityType="ADONETBioskop.Store.Radniks_Domar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Radniks_Projektant" EntityType="ADONETBioskop.Store.Radniks_Projektant" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="KartaKupac" Association="ADONETBioskop.Store.KartaKupac">
+      <End Role="Karta" EntitySet="Kartas" />
+      <End Role="Kupac" EntitySet="Kupacs" />
+    </AssociationSet>
+    <AssociationSet Name="ProjekcijaKarta" Association="ADONETBioskop.Store.ProjekcijaKarta">
+      <End Role="Projekcija" EntitySet="Projekcijas" />
+      <End Role="Karta" EntitySet="Kartas" />
+    </AssociationSet>
+    <AssociationSet Name="KartaProdavac" Association="ADONETBioskop.Store.KartaProdavac">
+      <End Role="Karta" EntitySet="Kartas" />
+      <End Role="Prodavac" EntitySet="Radniks_Prodavac" />
+    </AssociationSet>
+    <AssociationSet Name="FilmProjekcija" Association="ADONETBioskop.Store.FilmProjekcija">
+      <End Role="Projekcija" EntitySet="Projekcijas" />
+      <End Role="Film" EntitySet="Films" />
+    </AssociationSet>
+    <AssociationSet Name="ProjekcijaSala" Association="ADONETBioskop.Store.ProjekcijaSala">
+      <End Role="Projekcija" EntitySet="Projekcijas" />
+      <End Role="Sala" EntitySet="Salas" />
+    </AssociationSet>
+    <AssociationSet Name="SalaProjektor" Association="ADONETBioskop.Store.SalaProjektor">
+      <End Role="Sala" EntitySet="Salas" />
+      <End Role="Projektor" EntitySet="Projektors" />
+    </AssociationSet>
+    <AssociationSet Name="SalaOdrzava" Association="ADONETBioskop.Store.SalaOdrzava">
+      <End Role="Sala" EntitySet="Salas" />
+      <End Role="Odrzava" EntitySet="Odrzavas" />
+    </AssociationSet>
+    <AssociationSet Name="OdrzavaDomar" Association="ADONETBioskop.Store.OdrzavaDomar">
+      <End Role="Odrzava" EntitySet="Odrzavas" />
+      <End Role="Domar" EntitySet="Radniks_Domar" />
+    </AssociationSet>
+    <AssociationSet Name="OsposobljenProjektant" Association="ADONETBioskop.Store.OsposobljenProjektant">
+      <End Role="Osposobljen" EntitySet="Osposobljens" />
+      <End Role="Projektant" EntitySet="Radniks_Projektant" />
+    </AssociationSet>
+    <AssociationSet Name="OsposobljenProjektor" Association="ADONETBioskop.Store.OsposobljenProjektor">
+      <End Role="Osposobljen" EntitySet="Osposobljens" />
+      <End Role="Projektor" EntitySet="Projektors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prodavac_inherits_Radnik" Association="ADONETBioskop.Store.FK_Prodavac_inherits_Radnik">
+      <End Role="Radnik" EntitySet="Radniks" />
+      <End Role="Prodavac" EntitySet="Radniks_Prodavac" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domar_inherits_Radnik" Association="ADONETBioskop.Store.FK_Domar_inherits_Radnik">
+      <End Role="Radnik" EntitySet="Radniks" />
+      <End Role="Domar" EntitySet="Radniks_Domar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Projektant_inherits_Radnik" Association="ADONETBioskop.Store.FK_Projektant_inherits_Radnik">
+      <End Role="Radnik" EntitySet="Radniks" />
+      <End Role="Projektant" EntitySet="Radniks_Projektant" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Films">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Zanr" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DuzinaTrajanja" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salas">
+    <Key>
+      <PropertyRef Name="Broj" />
+    </Key>
+    <Property Name="Broj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrojMesta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kartas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrojSedista" Type="int" Nullable="false" />
+    <Property Name="Cena" Type="int" Nullable="false" />
+    <Property Name="KupacId" Type="int" Nullable="false" />
+    <Property Name="ProjekcijaId" Type="int" Nullable="false" />
+    <Property Name="ProdavacJMBG" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Radniks">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Plata" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projektors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cena" Type="int" Nullable="false" />
+    <Property Name="Sala_Broj" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Kupacs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projekcijas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pocetak" Type="datetime" Nullable="false" />
+    <Property Name="Kraj" Type="datetime" Nullable="false" />
+    <Property Name="FilmId" Type="int" Nullable="false" />
+    <Property Name="SalaBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Odrzavas">
+    <Key>
+      <PropertyRef Name="SalaBroj" />
+      <PropertyRef Name="DomarJMBG" />
+    </Key>
+    <Property Name="SalaBroj" Type="int" Nullable="false" />
+    <Property Name="DomarJMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Osposobljens">
+    <Key>
+      <PropertyRef Name="ProjektantJMBG" />
+      <PropertyRef Name="ProjektorId" />
+    </Key>
+    <Property Name="ProjektantJMBG" Type="int" Nullable="false" />
+    <Property Name="ProjektorId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Radniks_Prodavac">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Radniks_Domar">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Radniks_Projektant">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="KartaKupac">
+    <End Role="Karta" Type="ADONETBioskop.Store.Kartas" Multiplicity="*" />
+    <End Role="Kupac" Type="ADONETBioskop.Store.Kupacs" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kupac">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Karta">
+        <PropertyRef Name="KupacId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjekcijaKarta">
+    <End Role="Projekcija" Type="ADONETBioskop.Store.Projekcijas" Multiplicity="1" />
+    <End Role="Karta" Type="ADONETBioskop.Store.Kartas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projekcija">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Karta">
+        <PropertyRef Name="ProjekcijaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KartaProdavac">
+    <End Role="Karta" Type="ADONETBioskop.Store.Kartas" Multiplicity="*" />
+    <End Role="Prodavac" Type="ADONETBioskop.Store.Radniks_Prodavac" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Prodavac">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Karta">
+        <PropertyRef Name="ProdavacJMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FilmProjekcija">
+    <End Role="Projekcija" Type="ADONETBioskop.Store.Projekcijas" Multiplicity="*" />
+    <End Role="Film" Type="ADONETBioskop.Store.Films" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Projekcija">
+        <PropertyRef Name="FilmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjekcijaSala">
+    <End Role="Projekcija" Type="ADONETBioskop.Store.Projekcijas" Multiplicity="*" />
+    <End Role="Sala" Type="ADONETBioskop.Store.Salas" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Projekcija">
+        <PropertyRef Name="SalaBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalaProjektor">
+    <End Role="Sala" Type="ADONETBioskop.Store.Salas" Multiplicity="0..1" />
+    <End Role="Projektor" Type="ADONETBioskop.Store.Projektors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Projektor">
+        <PropertyRef Name="Sala_Broj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalaOdrzava">
+    <End Role="Sala" Type="ADONETBioskop.Store.Salas" Multiplicity="1" />
+    <End Role="Odrzava" Type="ADONETBioskop.Store.Odrzavas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Odrzava">
+        <PropertyRef Name="SalaBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OdrzavaDomar">
+    <End Role="Odrzava" Type="ADONETBioskop.Store.Odrzavas" Multiplicity="*" />
+    <End Role="Domar" Type="ADONETBioskop.Store.Radniks_Domar" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Domar">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Odrzava">
+        <PropertyRef Name="DomarJMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OsposobljenProjektant">
+    <End Role="Osposobljen" Type="ADONETBioskop.Store.Osposobljens" Multiplicity="*" />
+    <End Role="Projektant" Type="ADONETBioskop.Store.Radniks_Projektant" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Projektant">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Osposobljen">
+        <PropertyRef Name="ProjektantJMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OsposobljenProjektor">
+    <End Role="Osposobljen" Type="ADONETBioskop.Store.Osposobljens" Multiplicity="*" />
+    <End Role="Projektor" Type="ADONETBioskop.Store.Projektors" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Projektor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Osposobljen">
+        <PropertyRef Name="ProjektorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prodavac_inherits_Radnik">
+    <End Role="Radnik" Type="ADONETBioskop.Store.Radniks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Prodavac" Type="ADONETBioskop.Store.Radniks_Prodavac" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Radnik">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Prodavac">
+        <PropertyRef Name="JMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Domar_inherits_Radnik">
+    <End Role="Radnik" Type="ADONETBioskop.Store.Radniks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Domar" Type="ADONETBioskop.Store.Radniks_Domar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Radnik">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Domar">
+        <PropertyRef Name="JMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Projektant_inherits_Radnik">
+    <End Role="Radnik" Type="ADONETBioskop.Store.Radniks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Projektant" Type="ADONETBioskop.Store.Radniks_Projektant" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Radnik">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Projektant">
+        <PropertyRef Name="JMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ADONETBioskop" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ADONETBioskopContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Films" EntityType="ADONETBioskop.Film" />
+          <EntitySet Name="Salas" EntityType="ADONETBioskop.Sala" />
+          <EntitySet Name="Kartas" EntityType="ADONETBioskop.Karta" />
+          <EntitySet Name="Radniks" EntityType="ADONETBioskop.Radnik" />
+          <EntitySet Name="Projektors" EntityType="ADONETBioskop.Projektor" />
+          <EntitySet Name="Kupacs" EntityType="ADONETBioskop.Kupac" />
+          <EntitySet Name="Projekcijas" EntityType="ADONETBioskop.Projekcija" />
+          <AssociationSet Name="KartaKupac" Association="ADONETBioskop.KartaKupac">
+            <End Role="Karta" EntitySet="Kartas" />
+            <End Role="Kupac" EntitySet="Kupacs" />
+          </AssociationSet>
+          <AssociationSet Name="ProjekcijaKarta" Association="ADONETBioskop.ProjekcijaKarta">
+            <End Role="Projekcija" EntitySet="Projekcijas" />
+            <End Role="Karta" EntitySet="Kartas" />
+          </AssociationSet>
+          <AssociationSet Name="KartaProdavac" Association="ADONETBioskop.KartaProdavac">
+            <End Role="Karta" EntitySet="Kartas" />
+            <End Role="Prodavac" EntitySet="Radniks" />
+          </AssociationSet>
+         
+          <AssociationSet Name="FilmProjekcija" Association="ADONETBioskop.FilmProjekcija">
+            <End Role="Projekcija" EntitySet="Projekcijas" />
+            <End Role="Film" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="ProjekcijaSala" Association="ADONETBioskop.ProjekcijaSala">
+            <End Role="Projekcija" EntitySet="Projekcijas" />
+            <End Role="Sala" EntitySet="Salas" />
+          </AssociationSet>
+          <AssociationSet Name="SalaProjektor" Association="ADONETBioskop.SalaProjektor">
+            <End Role="Sala" EntitySet="Salas" />
+            <End Role="Projektor" EntitySet="Projektors" />
+          </AssociationSet>
+          <EntitySet Name="Odrzavas" EntityType="ADONETBioskop.Odrzava" />
+          <AssociationSet Name="SalaOdrzava" Association="ADONETBioskop.SalaOdrzava">
+            <End Role="Sala" EntitySet="Salas" />
+            <End Role="Odrzava" EntitySet="Odrzavas" />
+          </AssociationSet>
+          <AssociationSet Name="OdrzavaDomar" Association="ADONETBioskop.OdrzavaDomar">
+            <End Role="Odrzava" EntitySet="Odrzavas" />
+            <End Role="Domar" EntitySet="Radniks" />
+          </AssociationSet>
+          <EntitySet Name="Osposobljens" EntityType="ADONETBioskop.Osposobljen" />
+          <AssociationSet Name="OsposobljenProjektant" Association="ADONETBioskop.OsposobljenProjektant">
+            <End Role="Osposobljen" EntitySet="Osposobljens" />
+            <End Role="Projektant" EntitySet="Radniks" />
+          </AssociationSet>
+          <AssociationSet Name="OsposobljenProjektor" Association="ADONETBioskop.OsposobljenProjektor">
+            <End Role="Osposobljen" EntitySet="Osposobljens" />
+            <End Role="Projektor" EntitySet="Projektors" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <Property Name="Zanr" Type="String" Nullable="false" />
+          <Property Name="DuzinaTrajanja" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="Broj" />
+          </Key>
+          <Property Name="Broj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojMesta" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojSedista" Type="Int32" Nullable="false" />
+          <Property Name="Cena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kupac" Relationship="ADONETBioskop.KartaKupac" FromRole="Karta" ToRole="Kupac" />
+          <Property Name="KupacId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projekcija" Relationship="ADONETBioskop.ProjekcijaKarta" FromRole="Karta" ToRole="Projekcija" />
+          <Property Name="ProjekcijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prodavac" Relationship="ADONETBioskop.KartaProdavac" FromRole="Karta" ToRole="Prodavac" />
+          <Property Name="ProdavacJMBG" Nullable="true" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Radnik">
+          <Key>
+            <PropertyRef Name="JMBG" />
+          </Key>
+          <Property Name="JMBG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" Nullable="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" />
+          <Property Name="Plata" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prodavac" BaseType="ADONETBioskop.Radnik">
+        </EntityType>
+        <EntityType Name="Projektant" BaseType="ADONETBioskop.Radnik">
+        </EntityType>
+        <EntityType Name="Domar" BaseType="ADONETBioskop.Radnik">
+        </EntityType>
+        <EntityType Name="Projektor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model" Type="String" Nullable="false" />
+          <Property Name="Cena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sala" Relationship="ADONETBioskop.SalaProjektor" FromRole="Projektor" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="Kupac">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" Nullable="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projekcija">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pocetak" Type="DateTime" Nullable="false" />
+          <Property Name="Kraj" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Film" Relationship="ADONETBioskop.FilmProjekcija" FromRole="Projekcija" ToRole="Film" />
+          <Property Name="FilmId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sala" Relationship="ADONETBioskop.ProjekcijaSala" FromRole="Projekcija" ToRole="Sala" />
+          <Property Name="SalaBroj" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="KartaKupac">
+          <End Type="ADONETBioskop.Karta" Role="Karta" Multiplicity="*" />
+          <End Type="ADONETBioskop.Kupac" Role="Kupac" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="KupacId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjekcijaKarta">
+          <End Type="ADONETBioskop.Projekcija" Role="Projekcija" Multiplicity="1" />
+          <End Type="ADONETBioskop.Karta" Role="Karta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekcija">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="ProjekcijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KartaProdavac">
+          <End Type="ADONETBioskop.Karta" Role="Karta" Multiplicity="*" />
+          <End Type="ADONETBioskop.Prodavac" Role="Prodavac" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Prodavac">
+              <PropertyRef Name="JMBG" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="ProdavacJMBG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      
+        <Association Name="FilmProjekcija">
+          <End Type="ADONETBioskop.Projekcija" Role="Projekcija" Multiplicity="*" />
+          <End Type="ADONETBioskop.Film" Role="Film" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="FilmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjekcijaSala">
+          <End Type="ADONETBioskop.Projekcija" Role="Projekcija" Multiplicity="*" />
+          <End Type="ADONETBioskop.Sala" Role="Sala" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="Broj" />
+            </Principal>
+            <Dependent Role="Projekcija">
+              <PropertyRef Name="SalaBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SalaProjektor">
+          <End Type="ADONETBioskop.Sala" Role="Sala" Multiplicity="0..1" />
+          <End Type="ADONETBioskop.Projektor" Role="Projektor" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="Odrzava">
+          <Key>
+            <PropertyRef Name="SalaBroj" />
+            <PropertyRef Name="DomarJMBG" />
+          </Key>
+          <NavigationProperty Name="Sala" Relationship="ADONETBioskop.SalaOdrzava" FromRole="Odrzava" ToRole="Sala" />
+          <Property Name="SalaBroj" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Domar" Relationship="ADONETBioskop.OdrzavaDomar" FromRole="Odrzava" ToRole="Domar" />
+          <Property Name="DomarJMBG" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="SalaOdrzava">
+          <End Type="ADONETBioskop.Sala" Role="Sala" Multiplicity="1" />
+          <End Type="ADONETBioskop.Odrzava" Role="Odrzava" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="Broj" />
+            </Principal>
+            <Dependent Role="Odrzava">
+              <PropertyRef Name="SalaBroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OdrzavaDomar">
+          <End Type="ADONETBioskop.Odrzava" Role="Odrzava" Multiplicity="*" />
+          <End Type="ADONETBioskop.Domar" Role="Domar" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Domar">
+              <PropertyRef Name="JMBG" />
+            </Principal>
+            <Dependent Role="Odrzava">
+              <PropertyRef Name="DomarJMBG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Osposobljen">
+          <Key>
+            <PropertyRef Name="ProjektantJMBG" />
+            <PropertyRef Name="ProjektorId" />
+          </Key>
+          <NavigationProperty Name="Projektant" Relationship="ADONETBioskop.OsposobljenProjektant" FromRole="Osposobljen" ToRole="Projektant" />
+          <Property Name="ProjektantJMBG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Projektor" Relationship="ADONETBioskop.OsposobljenProjektor" FromRole="Osposobljen" ToRole="Projektor" />
+          <Property Name="ProjektorId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="OsposobljenProjektant">
+          <End Type="ADONETBioskop.Osposobljen" Role="Osposobljen" Multiplicity="*" />
+          <End Type="ADONETBioskop.Projektant" Role="Projektant" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Projektant">
+              <PropertyRef Name="JMBG" />
+            </Principal>
+            <Dependent Role="Osposobljen">
+              <PropertyRef Name="ProjektantJMBG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OsposobljenProjektor">
+          <End Type="ADONETBioskop.Osposobljen" Role="Osposobljen" Multiplicity="*" />
+          <End Type="ADONETBioskop.Projektor" Role="Projektor" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Projektor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Osposobljen">
+              <PropertyRef Name="ProjektorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ADONETBioskopStoreContainer" CdmEntityContainer="ADONETBioskopContainer">
+    <EntitySetMapping Name="Films">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Film)">
+        <MappingFragment StoreEntitySet="Films">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Zanr" ColumnName="Zanr" />
+          <ScalarProperty Name="DuzinaTrajanja" ColumnName="DuzinaTrajanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Sala)">
+        <MappingFragment StoreEntitySet="Salas">
+          <ScalarProperty Name="Broj" ColumnName="Broj" />
+          <ScalarProperty Name="BrojMesta" ColumnName="BrojMesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kartas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Karta)">
+        <MappingFragment StoreEntitySet="Kartas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrojSedista" ColumnName="BrojSedista" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="KupacId" ColumnName="KupacId" />
+          <ScalarProperty Name="ProjekcijaId" ColumnName="ProjekcijaId" />
+          <ScalarProperty Name="ProdavacJMBG" ColumnName="ProdavacJMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Radniks">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Radnik)">
+        <MappingFragment StoreEntitySet="Radniks">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Plata" ColumnName="Plata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Prodavac)">
+        <MappingFragment StoreEntitySet="Radniks_Prodavac">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Domar)">
+        <MappingFragment StoreEntitySet="Radniks_Domar">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Projektant)">
+        <MappingFragment StoreEntitySet="Radniks_Projektant">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projektors">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Projektor)">
+        <MappingFragment StoreEntitySet="Projektors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kupacs">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Kupac)">
+        <MappingFragment StoreEntitySet="Kupacs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projekcijas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Projekcija)">
+        <MappingFragment StoreEntitySet="Projekcijas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pocetak" ColumnName="Pocetak" />
+          <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+          <ScalarProperty Name="FilmId" ColumnName="FilmId" />
+          <ScalarProperty Name="SalaBroj" ColumnName="SalaBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Odrzavas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Odrzava)">
+        <MappingFragment StoreEntitySet="Odrzavas">
+          <ScalarProperty Name="SalaBroj" ColumnName="SalaBroj" />
+          <ScalarProperty Name="DomarJMBG" ColumnName="DomarJMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Osposobljens">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Osposobljen)">
+        <MappingFragment StoreEntitySet="Osposobljens">
+          <ScalarProperty Name="ProjektantJMBG" ColumnName="ProjektantJMBG" />
+          <ScalarProperty Name="ProjektorId" ColumnName="ProjektorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SalaProjektor" TypeName="ADONETBioskop.SalaProjektor" StoreEntitySet="Projektors">
+      <EndProperty Name="Sala">
+        <ScalarProperty Name="Broj" ColumnName="Sala_Broj" />
+      </EndProperty>
+      <EndProperty Name="Projektor">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Sala_Broj" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

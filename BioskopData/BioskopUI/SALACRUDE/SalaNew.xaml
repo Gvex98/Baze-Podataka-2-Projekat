@@ -1,0 +1,18 @@
+﻿<Window x:Class="BioskopUI.SalaNew"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BioskopUI"
+        mc:Ignorable="d"
+        Title="SalaNew" Height="450" Width="800">
+    <Grid>
+        <Label FontSize="20" Content="Broj:" HorizontalAlignment="Left" Margin="152,79,0,0" VerticalAlignment="Top" Width="79"/>
+        <Label FontSize="20" Content="Broj mesta:" HorizontalAlignment="Left" Margin="152,171,0,0" VerticalAlignment="Top" Width="110"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Broj" FontSize="20" BorderBrush="Black" Height="37" Margin="372,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Broj_mesta" FontSize="20" BorderBrush="Black" Height="37" Margin="372,171,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186"/>
+        <Button FontSize="20" Content="Zatvori" HorizontalAlignment="Left" Margin="152,345,0,0" VerticalAlignment="Top" Width="100" Height="47"/>
+        <Button FontSize="20" Content="Dodaj" HorizontalAlignment="Left" Margin="446,345,0,0" VerticalAlignment="Top" Width="112" Height="47" Click="Button_Click" />
+        <Label FontSize="20" Foreground="Red" Content="Label" x:Name="error" Visibility="Hidden" HorizontalAlignment="Left" Margin="279,290,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

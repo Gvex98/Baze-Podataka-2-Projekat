@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ADONETBioskopStoreContainer" CdmEntityContainer="ADONETBioskopContainer">
+    <EntitySetMapping Name="Films">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Film)">
+        <MappingFragment StoreEntitySet="Films">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Zanr" ColumnName="Zanr" />
+          <ScalarProperty Name="DuzinaTrajanja" ColumnName="DuzinaTrajanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Sala)">
+        <MappingFragment StoreEntitySet="Salas">
+          <ScalarProperty Name="Broj" ColumnName="Broj" />
+          <ScalarProperty Name="BrojMesta" ColumnName="BrojMesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kartas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Karta)">
+        <MappingFragment StoreEntitySet="Kartas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrojSedista" ColumnName="BrojSedista" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="KupacId" ColumnName="KupacId" />
+          <ScalarProperty Name="ProjekcijaId" ColumnName="ProjekcijaId" />
+          <ScalarProperty Name="ProdavacJMBG" ColumnName="ProdavacJMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Radniks">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Radnik)">
+        <MappingFragment StoreEntitySet="Radniks">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Plata" ColumnName="Plata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Prodavac)">
+        <MappingFragment StoreEntitySet="Radniks_Prodavac">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Domar)">
+        <MappingFragment StoreEntitySet="Radniks_Domar">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Projektant)">
+        <MappingFragment StoreEntitySet="Radniks_Projektant">
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projektors">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Projektor)">
+        <MappingFragment StoreEntitySet="Projektors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kupacs">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Kupac)">
+        <MappingFragment StoreEntitySet="Kupacs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projekcijas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Projekcija)">
+        <MappingFragment StoreEntitySet="Projekcijas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pocetak" ColumnName="Pocetak" />
+          <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+          <ScalarProperty Name="FilmId" ColumnName="FilmId" />
+          <ScalarProperty Name="SalaBroj" ColumnName="SalaBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Odrzavas">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Odrzava)">
+        <MappingFragment StoreEntitySet="Odrzavas">
+          <ScalarProperty Name="SalaBroj" ColumnName="SalaBroj" />
+          <ScalarProperty Name="DomarJMBG" ColumnName="DomarJMBG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Osposobljens">
+      <EntityTypeMapping TypeName="IsTypeOf(ADONETBioskop.Osposobljen)">
+        <MappingFragment StoreEntitySet="Osposobljens">
+          <ScalarProperty Name="ProjektantJMBG" ColumnName="ProjektantJMBG" />
+          <ScalarProperty Name="ProjektorId" ColumnName="ProjektorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SalaProjektor" TypeName="ADONETBioskop.SalaProjektor" StoreEntitySet="Projektors">
+      <EndProperty Name="Sala">
+        <ScalarProperty Name="Broj" ColumnName="Sala_Broj" />
+      </EndProperty>
+      <EndProperty Name="Projektor">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Sala_Broj" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

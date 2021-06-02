@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16910CC9-8330-426F-B54F-F3C6A6DBAFA5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BioskopUI</RootNamespace>
+    <AssemblyName>BioskopUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="KARTACRUDE\KartaEdit.xaml.cs">
+      <DependentUpon>KartaEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KARTACRUDE\KartaMain.xaml.cs">
+      <DependentUpon>KartaMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KARTACRUDE\KartaNew.xaml.cs">
+      <DependentUpon>KartaNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ODRZAVACRUDE\OdrzavaMain.xaml.cs">
+      <DependentUpon>OdrzavaMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ODRZAVACRUDE\OdrzavaNew.xaml.cs">
+      <DependentUpon>OdrzavaNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PROJEKCIJACRUDE\ProjekcijaEdit.xaml.cs">
+      <DependentUpon>ProjekcijaEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PROJEKCIJACRUDE\ProjekcijaNew.xaml.cs">
+      <DependentUpon>ProjekcijaNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PROJEKCIJACRUDE\ProjekcijeMain.xaml.cs">
+      <DependentUpon>ProjekcijeMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OSPOSOBLJENCRUDE\ProjektantRadiMain.xaml.cs">
+      <DependentUpon>ProjektantRadiMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OSPOSOBLJENCRUDE\ProjektantRadiNew.xaml.cs">
+      <DependentUpon>ProjektantRadiNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PROJEKTORCRUDE\ProjektorEdit.xaml.cs">
+      <DependentUpon>ProjektorEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PROJEKTORCRUDE\ProjektorMain.xaml.cs">
+      <DependentUpon>ProjektorMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PROJEKTORCRUDE\ProjektorNew.xaml.cs">
+      <DependentUpon>ProjektorNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RADNICICRUDE\RadniciEdit.xaml.cs">
+      <DependentUpon>RadniciEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RADNICICRUDE\RadniciMain.xaml.cs">
+      <DependentUpon>RadniciMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RADNICICRUDE\RadnikNew.xaml.cs">
+      <DependentUpon>RadnikNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SALACRUDE\SalaNew.xaml.cs">
+      <DependentUpon>SalaNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SALACRUDE\SaleEdit.xaml.cs">
+      <DependentUpon>SaleEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SALACRUDE\SaleMain.xaml.cs">
+      <DependentUpon>SaleMain.xaml</DependentUpon>
+    </Compile>
+    <Page Include="FILMCRUDE\EditFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FILMCRUDE\Filmovi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KARTACRUDE\KartaEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KARTACRUDE\KartaMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KARTACRUDE\KartaNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KUPACCRUDE\KupciEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KUPACCRUDE\KupciMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data.cs" />
+    <Compile Include="FILMCRUDE\EditFilm.xaml.cs">
+      <DependentUpon>EditFilm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FILMCRUDE\Filmovi.xaml.cs">
+      <DependentUpon>Filmovi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KUPACCRUDE\KupciEdit.xaml.cs">
+      <DependentUpon>KupciEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KUPACCRUDE\KupciMain.xaml.cs">
+      <DependentUpon>KupciMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="FILMCRUDE\NoviFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KUPACCRUDE\NoviKupac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ODRZAVACRUDE\OdrzavaMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ODRZAVACRUDE\OdrzavaNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PROJEKCIJACRUDE\ProjekcijaEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PROJEKCIJACRUDE\ProjekcijaNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PROJEKCIJACRUDE\ProjekcijeMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OSPOSOBLJENCRUDE\ProjektantRadiMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OSPOSOBLJENCRUDE\ProjektantRadiNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PROJEKTORCRUDE\ProjektorEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PROJEKTORCRUDE\ProjektorMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PROJEKTORCRUDE\ProjektorNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RADNICICRUDE\RadniciEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RADNICICRUDE\RadniciMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RADNICICRUDE\RadnikNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SALACRUDE\SalaNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SALACRUDE\SaleEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SALACRUDE\SaleMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FILMCRUDE\NoviFilm.xaml.cs">
+      <DependentUpon>NoviFilm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KUPACCRUDE\NoviKupac.xaml.cs">
+      <DependentUpon>NoviKupac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BioskopData\BioskopData.csproj">
+      <Project>{a1f84dc2-f832-455d-8920-5855c1d59423}</Project>
+      <Name>BioskopData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

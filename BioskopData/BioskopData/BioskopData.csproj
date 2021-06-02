@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1F84DC2-F832-455D-8920-5855C1D59423}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BioskopData</RootNamespace>
+    <AssemblyName>BioskopData</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADONETBioskop.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADONETBioskop.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Classes.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Classes.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domar.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Film.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Karta.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kupac.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Odrzava.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Osposobljen.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prodavac.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Projekcija.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Projektant.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Projektor.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Radnik.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sala.cs">
+      <DependentUpon>Classes.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ADONETBioskop.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ADONETBioskop.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ADONETBioskop.edmx.diagram">
+      <DependentUpon>ADONETBioskop.edmx</DependentUpon>
+    </None>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ADONETBioskop.edmx.sql" />
+    <Content Include="Classes.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Classes.Context.cs</LastGenOutput>
+      <DependentUpon>ADONETBioskop.edmx</DependentUpon>
+    </Content>
+    <Content Include="Classes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Classes.cs</LastGenOutput>
+      <DependentUpon>ADONETBioskop.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

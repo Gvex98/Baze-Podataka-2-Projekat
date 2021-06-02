@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ADONETBioskop" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ADONETBioskopContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Films" EntityType="ADONETBioskop.Film" />
+    <EntitySet Name="Salas" EntityType="ADONETBioskop.Sala" />
+    <EntitySet Name="Kartas" EntityType="ADONETBioskop.Karta" />
+    <EntitySet Name="Radniks" EntityType="ADONETBioskop.Radnik" />
+    <EntitySet Name="Projektors" EntityType="ADONETBioskop.Projektor" />
+    <EntitySet Name="Kupacs" EntityType="ADONETBioskop.Kupac" />
+    <EntitySet Name="Projekcijas" EntityType="ADONETBioskop.Projekcija" />
+    <AssociationSet Name="KartaKupac" Association="ADONETBioskop.KartaKupac">
+      <End Role="Karta" EntitySet="Kartas" />
+      <End Role="Kupac" EntitySet="Kupacs" />
+    </AssociationSet>
+    <AssociationSet Name="ProjekcijaKarta" Association="ADONETBioskop.ProjekcijaKarta">
+      <End Role="Projekcija" EntitySet="Projekcijas" />
+      <End Role="Karta" EntitySet="Kartas" />
+    </AssociationSet>
+    <AssociationSet Name="KartaProdavac" Association="ADONETBioskop.KartaProdavac">
+      <End Role="Karta" EntitySet="Kartas" />
+      <End Role="Prodavac" EntitySet="Radniks" />
+    </AssociationSet>
+    <AssociationSet Name="FilmProjekcija" Association="ADONETBioskop.FilmProjekcija">
+      <End Role="Projekcija" EntitySet="Projekcijas" />
+      <End Role="Film" EntitySet="Films" />
+    </AssociationSet>
+    <AssociationSet Name="ProjekcijaSala" Association="ADONETBioskop.ProjekcijaSala">
+      <End Role="Projekcija" EntitySet="Projekcijas" />
+      <End Role="Sala" EntitySet="Salas" />
+    </AssociationSet>
+    <AssociationSet Name="SalaProjektor" Association="ADONETBioskop.SalaProjektor">
+      <End Role="Sala" EntitySet="Salas" />
+      <End Role="Projektor" EntitySet="Projektors" />
+    </AssociationSet>
+    <EntitySet Name="Odrzavas" EntityType="ADONETBioskop.Odrzava" />
+    <AssociationSet Name="SalaOdrzava" Association="ADONETBioskop.SalaOdrzava">
+      <End Role="Sala" EntitySet="Salas" />
+      <End Role="Odrzava" EntitySet="Odrzavas" />
+    </AssociationSet>
+    <AssociationSet Name="OdrzavaDomar" Association="ADONETBioskop.OdrzavaDomar">
+      <End Role="Odrzava" EntitySet="Odrzavas" />
+      <End Role="Domar" EntitySet="Radniks" />
+    </AssociationSet>
+    <EntitySet Name="Osposobljens" EntityType="ADONETBioskop.Osposobljen" />
+    <AssociationSet Name="OsposobljenProjektant" Association="ADONETBioskop.OsposobljenProjektant">
+      <End Role="Osposobljen" EntitySet="Osposobljens" />
+      <End Role="Projektant" EntitySet="Radniks" />
+    </AssociationSet>
+    <AssociationSet Name="OsposobljenProjektor" Association="ADONETBioskop.OsposobljenProjektor">
+      <End Role="Osposobljen" EntitySet="Osposobljens" />
+      <End Role="Projektor" EntitySet="Projektors" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" Nullable="false" />
+    <Property Name="Zanr" Type="String" Nullable="false" />
+    <Property Name="DuzinaTrajanja" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sala">
+    <Key>
+      <PropertyRef Name="Broj" />
+    </Key>
+    <Property Name="Broj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrojMesta" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Karta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrojSedista" Type="Int32" Nullable="false" />
+    <Property Name="Cena" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kupac" Relationship="ADONETBioskop.KartaKupac" FromRole="Karta" ToRole="Kupac" />
+    <Property Name="KupacId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Projekcija" Relationship="ADONETBioskop.ProjekcijaKarta" FromRole="Karta" ToRole="Projekcija" />
+    <Property Name="ProjekcijaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prodavac" Relationship="ADONETBioskop.KartaProdavac" FromRole="Karta" ToRole="Prodavac" />
+    <Property Name="ProdavacJMBG" Nullable="true" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Radnik">
+    <Key>
+      <PropertyRef Name="JMBG" />
+    </Key>
+    <Property Name="JMBG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ime" Type="String" Nullable="false" />
+    <Property Name="Prezime" Type="String" Nullable="false" />
+    <Property Name="Plata" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prodavac" BaseType="ADONETBioskop.Radnik" />
+  <EntityType Name="Projektant" BaseType="ADONETBioskop.Radnik" />
+  <EntityType Name="Domar" BaseType="ADONETBioskop.Radnik" />
+  <EntityType Name="Projektor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="String" Nullable="false" />
+    <Property Name="Cena" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sala" Relationship="ADONETBioskop.SalaProjektor" FromRole="Projektor" ToRole="Sala" />
+  </EntityType>
+  <EntityType Name="Kupac">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ime" Type="String" Nullable="false" />
+    <Property Name="Prezime" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projekcija">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pocetak" Type="DateTime" Nullable="false" />
+    <Property Name="Kraj" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Film" Relationship="ADONETBioskop.FilmProjekcija" FromRole="Projekcija" ToRole="Film" />
+    <Property Name="FilmId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sala" Relationship="ADONETBioskop.ProjekcijaSala" FromRole="Projekcija" ToRole="Sala" />
+    <Property Name="SalaBroj" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="KartaKupac">
+    <End Type="ADONETBioskop.Karta" Role="Karta" Multiplicity="*" />
+    <End Type="ADONETBioskop.Kupac" Role="Kupac" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kupac">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Karta">
+        <PropertyRef Name="KupacId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjekcijaKarta">
+    <End Type="ADONETBioskop.Projekcija" Role="Projekcija" Multiplicity="1" />
+    <End Type="ADONETBioskop.Karta" Role="Karta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projekcija">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Karta">
+        <PropertyRef Name="ProjekcijaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KartaProdavac">
+    <End Type="ADONETBioskop.Karta" Role="Karta" Multiplicity="*" />
+    <End Type="ADONETBioskop.Prodavac" Role="Prodavac" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Prodavac">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Karta">
+        <PropertyRef Name="ProdavacJMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FilmProjekcija">
+    <End Type="ADONETBioskop.Projekcija" Role="Projekcija" Multiplicity="*" />
+    <End Type="ADONETBioskop.Film" Role="Film" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Projekcija">
+        <PropertyRef Name="FilmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjekcijaSala">
+    <End Type="ADONETBioskop.Projekcija" Role="Projekcija" Multiplicity="*" />
+    <End Type="ADONETBioskop.Sala" Role="Sala" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Projekcija">
+        <PropertyRef Name="SalaBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalaProjektor">
+    <End Type="ADONETBioskop.Sala" Role="Sala" Multiplicity="0..1" />
+    <End Type="ADONETBioskop.Projektor" Role="Projektor" Multiplicity="0..1" />
+  </Association>
+  <EntityType Name="Odrzava">
+    <Key>
+      <PropertyRef Name="SalaBroj" />
+      <PropertyRef Name="DomarJMBG" />
+    </Key>
+    <NavigationProperty Name="Sala" Relationship="ADONETBioskop.SalaOdrzava" FromRole="Odrzava" ToRole="Sala" />
+    <Property Name="SalaBroj" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Domar" Relationship="ADONETBioskop.OdrzavaDomar" FromRole="Odrzava" ToRole="Domar" />
+    <Property Name="DomarJMBG" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="SalaOdrzava">
+    <End Type="ADONETBioskop.Sala" Role="Sala" Multiplicity="1" />
+    <End Type="ADONETBioskop.Odrzava" Role="Odrzava" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="Broj" />
+      </Principal>
+      <Dependent Role="Odrzava">
+        <PropertyRef Name="SalaBroj" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OdrzavaDomar">
+    <End Type="ADONETBioskop.Odrzava" Role="Odrzava" Multiplicity="*" />
+    <End Type="ADONETBioskop.Domar" Role="Domar" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Domar">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Odrzava">
+        <PropertyRef Name="DomarJMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Osposobljen">
+    <Key>
+      <PropertyRef Name="ProjektantJMBG" />
+      <PropertyRef Name="ProjektorId" />
+    </Key>
+    <NavigationProperty Name="Projektant" Relationship="ADONETBioskop.OsposobljenProjektant" FromRole="Osposobljen" ToRole="Projektant" />
+    <Property Name="ProjektantJMBG" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Projektor" Relationship="ADONETBioskop.OsposobljenProjektor" FromRole="Osposobljen" ToRole="Projektor" />
+    <Property Name="ProjektorId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="OsposobljenProjektant">
+    <End Type="ADONETBioskop.Osposobljen" Role="Osposobljen" Multiplicity="*" />
+    <End Type="ADONETBioskop.Projektant" Role="Projektant" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Projektant">
+        <PropertyRef Name="JMBG" />
+      </Principal>
+      <Dependent Role="Osposobljen">
+        <PropertyRef Name="ProjektantJMBG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OsposobljenProjektor">
+    <End Type="ADONETBioskop.Osposobljen" Role="Osposobljen" Multiplicity="*" />
+    <End Type="ADONETBioskop.Projektor" Role="Projektor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Projektor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Osposobljen">
+        <PropertyRef Name="ProjektorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
